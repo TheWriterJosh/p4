@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Destination;
+use DB;
 
-class BookController extends Controller
+class BucketlistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('book.list');
+      $destinations = Destination::all();
+      return view('bucketlist.index')->with('destinations',$destinations);
     }
 
     /**
@@ -21,9 +24,10 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        return view('book.create');
+        return view('bucketlist.create');
     }
 
     /**
@@ -32,28 +36,35 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+
       $this->validate($request, [
-      'title' => 'required|min:3|max:25|alpha',
+        'destination' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
+        'year' => 'required|min:2016|max:2099|numeric',
+        'country' => 'required|min:3|max:25|alpha',
+        'type' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
+        'continent' => 'required|min:4|max:25|alpha'
       ]);
+        return redirect ('/index'); }
+      /*
+      $destination = new Destination();
+      $destination->destination = $request->destination;
+      $destination->country = $request->country;
+      $destination->continent = $request->continent;
+      $destination->type = $request->type;
+      $destination->year = $request->year;
+      $destination->save();*/
 
-      # If the code makes it here, you can assume the validation passed
-      $title = $request->input('title');
+      /**
 
-      # Code would go here to add the book to the database
-        return 'Process adding new book: '.$_POST['title'];
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($title)
+    public function show($destination)
     {
-       return view('book.show')->with('title', $title);
+       return view('bucketlist.show')->with('destination', $destination);
     }
 
     /**
@@ -62,9 +73,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($title)
+    public function edit($destination)
     {
-        return view('book.edit')->with('title', $title);
+        return view('bucketlist.edit')->with('destination', $destination);
     }
 
     /**

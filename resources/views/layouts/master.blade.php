@@ -25,3 +25,6 @@
       @yield('body')
 </body>
 </html>
+@if(Session::get('flash_message') != null))
+    <div class='flash_message'>{{ Session::get('flash_message') }}</div>
+@endif

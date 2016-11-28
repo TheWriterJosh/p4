@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>Welcome to your Bucket list!!! Here's where you want to go.</h1>
+<h1>Here you can edit {{ $destination }}.</h1>
 @stop
 
 @section('body')
