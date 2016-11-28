@@ -41,20 +41,20 @@ class BucketlistController extends Controller
       $this->validate($request, [
         'destination' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
         'year' => 'required|min:2016|max:2099|numeric',
-        'country' => 'required|min:3|max:25|alpha',
+        'country' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
         'type' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
-        'continent' => 'required|min:4|max:25|alpha'
+        'continent' => 'required|min:4|max:25|regex:/^[\pL\s\-]+$/u'
       ]);
-        return redirect ('/index'); }
-      /*
+
       $destination = new Destination();
       $destination->destination = $request->destination;
       $destination->country = $request->country;
       $destination->continent = $request->continent;
       $destination->type = $request->type;
       $destination->year = $request->year;
-      $destination->save();*/
-
+      $destination->save();
+      return redirect ('/index');
+      }
       /**
 
      * Display the specified resource.
