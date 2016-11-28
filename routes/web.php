@@ -17,6 +17,6 @@ Route::get('/index', 'BucketlistController@index');
 Route::get('/create', 'BucketlistController@create');
 Route::post('/', 'BucketlistController@store')->name('bucketlist.store');
 Route::get('/bucketlist/{destination}', 'BucketlistController@show')->name('bucketlist.show');
-Route::get('/bucketlist/{destination}/edit', 'BucketlistController@edit')->name('bucketlist.edit');
-Route::put('/bucketlist/{destination}', 'BucketlistController@update')->name('bucketlist.update');
+Route::get('/{id}/edit', 'BucketlistController@edit')->name('bucketlist.edit');
+Route::put('/{id}', 'BucketlistController@update')->name('bucketlist.update');
 Route::delete('/bucketlist/{destination}', 'BucketlistController@destroy')->name('bucketlist.destroy');

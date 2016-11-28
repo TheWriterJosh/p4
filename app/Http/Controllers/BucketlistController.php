@@ -64,7 +64,7 @@ class BucketlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($destination)
+    public function show($id)
     {
        return view('bucketlist.show')->with('destination', $destination);
     }
@@ -75,8 +75,9 @@ class BucketlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($destination)
+    public function edit($id)
     {
+        $destination = Destination::find($id);
         return view('bucketlist.edit')->with('destination', $destination);
     }
 
@@ -89,8 +90,24 @@ class BucketlistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+      $this->validate($request, [
+        'destination' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
+        'year' => 'required|min:2016|max:2099|numeric',
+        'country' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
+        'type' => 'required|min:3|max:25|regex:/^[\pL\s\-]+$/u',
+        'continent' => 'required|min:4|max:25|regex:/^[\pL\s\-]+$/u'
+      ]);
+
+      $destination = Destination::find($request->id);
+      $destination->destination = $request->destination;
+      $destination->type = $request->type;
+      $destination->year = $request->year;
+      $destination->country = $request->country;
+      $destination->continent = $request->continent;
+      $destination->save();
+      Session::flash('flash_message','You changed '.$destination->destination.'!');
+      return redirect ('/index');
+      }
 
     /**
      * Remove the specified resource from storage.
