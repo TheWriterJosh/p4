@@ -9,6 +9,9 @@
     @yield('head')
 </head>
 <body>
+    @if(Session::get('flash_message') != null)
+      {{ Session::get('flash_message') }}
+    @endif
     <header>
         <img
         src='http://pbs.twimg.com/media/CkYFVmzWUAAvxoa.jpg'
@@ -25,6 +28,3 @@
       @yield('body')
 </body>
 </html>
-@if(Session::get('flash_message') != null))
-    <div class='flash_message'>{{ Session::get('flash_message') }}</div>
-@endif

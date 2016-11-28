@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Destination;
 use DB;
+use Session;
 
 class BucketlistController extends Controller
 {
@@ -53,6 +54,7 @@ class BucketlistController extends Controller
       $destination->type = $request->type;
       $destination->year = $request->year;
       $destination->save();
+      Session::flash('flash_message','You placed '.$destination->destination.' in your bucket!');
       return redirect ('/index');
       }
       /**
