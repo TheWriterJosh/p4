@@ -1,19 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-.destination {
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.flash_message {
+    width:100%;
+    text-align:center;
+    padding:5px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:red;
+    font-color:white;
+}
+.square {
     border:1px solid #ccc;
-    margin-right:10px;
     margin-bottom:10px;
-    min-width:300px;
-    width:25%;
-    float:left;
     padding:10px;
+    height:200px;
+    text-align: center;
 }
-.destination h2 {
-    font-size:1.2em;
-    margin:1px;
-}
-
-.destination h3 {
-    font-size:1em;
-    margin:1px;
+.big {
+  margin-left: 5px;
 }

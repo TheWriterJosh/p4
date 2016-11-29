@@ -15,14 +15,13 @@
     <header>
         <img
         src='http://pbs.twimg.com/media/CkYFVmzWUAAvxoa.jpg'
-        style='width:1200px'
+        style='width:100%'
         alt='Travel Photo'>
     </header>
     <section>
         @yield('content')
     </section>
     <footer>
-        &copy; {{ date('Y') }}
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       @yield('body')
