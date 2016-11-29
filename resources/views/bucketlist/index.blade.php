@@ -10,7 +10,7 @@
 
 @section('content')
   <h1>Here's your bucketlist!</h1>
-  <p>Add another destination <a href="/create"> here.</a></p>
+  <p><a href='/bucketlist/create'>Add a new book</a></p>
   <div class='destinations'>
     @foreach($destinations as $destination)
         <section class='destination'>

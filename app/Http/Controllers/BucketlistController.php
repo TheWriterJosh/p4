@@ -17,7 +17,7 @@ class BucketlistController extends Controller
     public function index()
     {
       $destinations = Destination::all();
-      return view('bucketlist.index')->with('destinations',$destinations);
+      return view('bucketlist.index')->with(['destinations' => $destinations]);
     }
 
     /**
