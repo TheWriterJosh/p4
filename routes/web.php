@@ -11,12 +11,12 @@
 |
 */
 
-Route::resource('bucketlist', 'BucketlistController');
-Route::get('/', 'BucketlistController@index');
-Route::get('/index', 'BucketlistController@index');
-Route::get('/create', 'BucketlistController@create');
+
+Route::get('/', 'BucketlistController@index')->name('bucketlist.index');
+Route::get('/{id}', 'BucketlistController@show')->name('bucketlist.show');
+Route::get('/create', 'BucketlistController@create')->name('bucketlist.create');;
 Route::post('/', 'BucketlistController@store')->name('bucketlist.store');
-Route::get('/bucketlist/{destination}', 'BucketlistController@show')->name('bucketlist.show');
 Route::get('/{id}/edit', 'BucketlistController@edit')->name('bucketlist.edit');
 Route::put('/{id}', 'BucketlistController@update')->name('bucketlist.update');
-Route::delete('/bucketlist/{destination}', 'BucketlistController@destroy')->name('bucketlist.destroy');
+Route::get('/{id}/delete', 'BucketlistController@delete')->name('bucketlist.destroy');
+Route::delete('/{id}', 'BucketlistController@destroy')->name('bucketlist.destroy');

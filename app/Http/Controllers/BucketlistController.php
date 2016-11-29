@@ -28,7 +28,7 @@ class BucketlistController extends Controller
 
     public function create()
     {
-        return view('bucketlist.create');
+      return view('bucketlist.create');
     }
 
     /**
@@ -66,7 +66,15 @@ class BucketlistController extends Controller
      */
     public function show($id)
     {
-       return view('bucketlist.show')->with('destination', $destination);
+      $destination = Destination::find($id);
+       if(is_null($destination)) {
+           Session::flash('message','You havent entered this destination yet!');
+           return redirect('/');
+       }
+       return view('bucketlist.show')->with([
+                   'destination' => $destination,
+               ]);
+       //return view('bucketlist.show')->with('destination', $destination);
     }
 
     /**
@@ -115,8 +123,20 @@ class BucketlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function delete($id)
     {
-        //
+      $destination = Destination::find($id);
+      return view('bucketlist.delete')->with('destination', $destination);
+    }
+
+    public function destroy($id) {
+      $destination = Destination::find($id);
+      if(is_null($destination)) {
+        Session::flash('message','Thats not in your list yet!');
+      }
+        $destination->delete();
+        Session::flash('flash_message', $destination->Destination.' was deleted.');
+        return redirect('/');
     }
 }
