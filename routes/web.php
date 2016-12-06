@@ -27,7 +27,7 @@ Route::delete('/{id}', 'BucketlistController@destroy')->name('bucketlist.destroy
 
 //authentication routes
 Route::get('/auth/login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('/auth/login', 'Auth\LoginController@login');
+Route::post('/auth/login', 'Auth\LoginController@login')->name('login');;
 Route::get('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 

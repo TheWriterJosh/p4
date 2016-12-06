@@ -12,6 +12,9 @@
   @if(Session::get('flash_message') != null)
        <div class='flash_message'>{{ Session::get('flash_message') }}</div>
    @endif
+  @if(session('success'))
+    {{ session('success') }}
+  @endif
     <header>
         <img
         src='http://pbs.twimg.com/media/CkYFVmzWUAAvxoa.jpg'
