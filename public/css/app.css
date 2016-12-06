@@ -12,8 +12,8 @@ html {
     position:fixed;
     top:0;
     left:0;
-    background-color:red;
-    font-color:white;
+    color:red;
+    background-color: yellow;
 }
 .square {
     border:1px solid #ccc;

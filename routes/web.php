@@ -11,8 +11,12 @@
 |
 */
 
+//standard routes
+Route::get('/', 'BucketlistController@welcome')->name('bucketlist.welcome');
+Route::get('/index', 'BucketlistController@index')->name('bucketlist.index')->middleware('auth');
+Route::get('/home', 'HomeController@index');
+
 //app routes
-Route::get('/', 'BucketlistController@index')->name('bucketlist.index');
 Route::get('/{id}', 'BucketlistController@show')->name('bucketlist.show');
 Route::get('/bucketlist/create', 'BucketlistController@create')->name('bucketlist.create')->middleware('auth');
 Route::post('/', 'BucketlistController@store')->name('bucketlist.store');
@@ -20,12 +24,12 @@ Route::get('/{id}/edit', 'BucketlistController@edit')->name('bucketlist.edit');
 Route::put('/{id}', 'BucketlistController@update')->name('bucketlist.update');
 Route::get('/{id}/delete', 'BucketlistController@delete')->name('bucketlist.destroy');
 Route::delete('/{id}', 'BucketlistController@destroy')->name('bucketlist.destroy');
-Route::get('/home', 'HomeController@index');
 
 //authentication routes
 Route::get('/auth/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/auth/login', 'Auth\LoginController@login');
 Route::get('/auth/logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes
 Route::get('/auth/register', 'Auth\RegisterController@showRegistrationForm');

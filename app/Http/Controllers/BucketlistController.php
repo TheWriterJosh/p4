@@ -10,16 +10,23 @@ use Session;
 
 class BucketlistController extends Controller
 {
+    public function welcome(Request $request) {
+        if($request->user())
+            return redirect ('/index');
+        return view('bucketlist.welcome');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
       $user = $request->user();
       if($user) {
-        $destinations = $user->destinations()->get();
+        $destinations = Destination::where('user_id', '=', $user->id)->orderBy('id','DESC')->get();
       }
       else {
         $destinations = [];
@@ -80,8 +87,8 @@ class BucketlistController extends Controller
            return redirect('/');
        }
        return view('bucketlist.show')->with([
-                   'destination' => $destination,
-               ]);
+          'destination' => $destination,
+        ]);
        //return view('bucketlist.show')->with('destination', $destination);
     }
 
@@ -141,10 +148,10 @@ class BucketlistController extends Controller
     public function destroy($id) {
       $destination = Destination::find($id);
       if(is_null($destination)) {
-        Session::flash('message','Thats not in your list yet!');
+        Session::flash('flash_message','Thats not in your list yet!');
       }
         $destination->delete();
-        Session::flash('flash_message', $destination->Destination.' was deleted.');
-        return redirect('/');
+        Session::flash('flash_message', $destination->destination.' was deleted.');
+        return redirect('/index');
     }
 }
