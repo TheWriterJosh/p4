@@ -10,8 +10,6 @@
 
 @section('content')
   <h1>Here's your bucketlist!</h1>
-  <p><a href='/bucketlist/create'>Add a new destination</a></p>
-  <p><a href="/auth/register">Register</a> | <a href="/auth/login">Login</a> | <a href="/auth/logout">Logout</a></p>
   <div class="section">
       @foreach($destinations as $destination)
           <div class='col-sm-4 square'>
