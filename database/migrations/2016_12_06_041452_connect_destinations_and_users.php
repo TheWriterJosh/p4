@@ -14,7 +14,7 @@ class ConnectDestinationsAndUsers extends Migration
      public function up()
        {
            Schema::table('destinations', function (Blueprint $table) {
-             
+
                $table->integer('user_id')->unsigned();
 
                $table->foreign('user_id')->references('id')->on('users');
@@ -24,7 +24,7 @@ class ConnectDestinationsAndUsers extends Migration
 
        public function down()
        {
-           Schema::table('destination', function (Blueprint $table) {
+           Schema::table('destinations', function (Blueprint $table) {
 
                $table->dropForeign('destinations_user_id_foreign');
 
