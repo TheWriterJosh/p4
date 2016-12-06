@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-   protected $redirectTo = '/home';
+   protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -50,6 +50,6 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
         Session::flash('flash_message','You have been logged out.');
-        return redirect('/home');
+        return redirect('/index');
     }
 }
