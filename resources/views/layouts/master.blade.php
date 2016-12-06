@@ -22,12 +22,12 @@
     <ul class="nav navbar-nav" role="navigation">
         @if(Auth::check())
             <li><a href='/'>Home</a></li>
-            <li><a href='/create'>Add a Destination!</a></li>
+            <li><a href='/bucketlist/create'>Add a Destination!</a></li>
             <li><a href='/auth/logout'>Log out</a></li>
         @else
             <li><a href='/'>Home</a></li>
             <li><a href='/auth/login'>Log in</a></li>
-            <li><a href='auth//register'>Register</a></li>
+            <li><a href='/auth//register'>Register</a></li>
         @endif
     </ul>
 </nav>

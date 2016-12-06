@@ -14,9 +14,15 @@ class BucketlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $destinations = Destination::all();
+      $user = $request->user();
+      if($user) {
+        $destinations = $user->destinations()->get();
+      }
+      else {
+        $destinations = [];
+      }
       return view('bucketlist.index')->with(['destinations' => $destinations]);
     }
 
@@ -53,6 +59,7 @@ class BucketlistController extends Controller
       $destination->continent = $request->continent;
       $destination->type = $request->type;
       $destination->year = $request->year;
+      $destination->user_id = $request->user()->id;
       $destination->save();
       Session::flash('flash_message','You placed '.$destination->destination.' in your bucket!');
       return redirect ('/index');

@@ -20,6 +20,7 @@ class DestinationsTableSeeder extends Seeder
       'type' => 'city',
       'year' => 2017,
       'continent' => 'Europe',
+      'user_id' => 1,
       ]);
 
       DB::table('destinations')->insert([
@@ -30,6 +31,7 @@ class DestinationsTableSeeder extends Seeder
       'type' => 'National Park',
       'year' => 2018,
       'continent' => 'Asia',
+      'user_id' => 1,
       ]);
 
       DB::table('destinations')->insert([
@@ -40,6 +42,7 @@ class DestinationsTableSeeder extends Seeder
       'type' => 'Region',
       'year' => 2019,
       'continent' => 'North America',
+      'user_id' => 1,
       ]);
     }
 }
