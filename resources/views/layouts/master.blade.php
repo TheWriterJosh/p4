@@ -27,7 +27,7 @@
         @else
             <li><a href='/'>Home</a></li>
             <li><a href='/auth/login'>Log in</a></li>
-            <li><a href='/auth//register'>Register</a></li>
+            <li><a href='/auth/register'>Register</a></li>
         @endif
     </ul>
 </nav>
