@@ -50,6 +50,6 @@ class LoginController extends Controller
         $request->session()->flush();
         $request->session()->regenerate();
         Session::flash('flash_message','You successfully logged out!');
-        return redirect('/index');
+        return redirect('/');
     }
 }
